@@ -2,6 +2,8 @@ package ar.edu.undec.mascotas.domain;
 
 import java.time.LocalDate;
 
+
+
 public class Cliente {
 
     private String apellido;
@@ -9,12 +11,12 @@ public class Cliente {
     private String dni;
     private LocalDate fechaNac;
 
-
     public Cliente(String apellido, String nombre, String dni, LocalDate fechaNac) {
         this.apellido = apellido;
         this.nombre= nombre;
         this.dni=dni;
         this.fechaNac= fechaNac;
+
     }
 
     public static Cliente getInstance(String apellido, String nombre, String dni, LocalDate fechaNac) {
@@ -25,4 +27,8 @@ public class Cliente {
     public String getDni() {
        return this.dni;
     }
+
+
+
+
 }

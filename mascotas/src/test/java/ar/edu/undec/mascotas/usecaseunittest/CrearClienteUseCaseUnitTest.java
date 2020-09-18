@@ -2,6 +2,8 @@ package ar.edu.undec.mascotas.usecaseunittest;
 
 import Mockito.MockitoExtension;
 import ar.edu.undec.mascotas.domain.Cliente;
+import ar.edu.undec.mascotas.domain.Mascota;
+import ar.edu.undec.mascotas.exceptions.MascotaException;
 import ar.edu.undec.mascotas.repository.ICrearClienteRepository;
 import ar.edu.undec.mascotas.usecase.CrearClienteUseCase;
 import org.junit.jupiter.api.Test;
@@ -33,9 +35,6 @@ public class CrearClienteUseCaseUnitTest {
 
         assertTrue(crearClienteUseCase.crearCliente(cliente));
 
-
-
     }
-
 
 }

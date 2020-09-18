@@ -1,5 +1,8 @@
 package ar.edu.undec.mascotas.domain;
 
+import ar.edu.undec.mascotas.exceptions.MascotaException;
+import ar.edu.undec.mascotas.validations.MascotaValidation;
+
 import java.time.LocalDate;
 
 public class Mascota {
@@ -14,7 +17,9 @@ public class Mascota {
         this.raza=raza;
     }
 
-    public static Mascota getInstance(String nombre, String raza, LocalDate fechaNac) {
+    public static Mascota getInstance(String nombre, String raza, LocalDate fechaNac) throws MascotaException {
+        MascotaValidation.validarDatos(nombre,raza,fechaNac);
+
         return new Mascota(nombre,raza,fechaNac);
     }
 

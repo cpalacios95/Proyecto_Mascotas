@@ -42,4 +42,20 @@ public class Cliente {
         misMascotas.add(mascota);
         return true;
     }
+
+    public void setDni(String nuevoDni) {
+        this.dni=nuevoDni;
+    }
+
+    public void setApellido(String nuevoApellido) {
+        this.apellido=nuevoApellido;
+    }
+
+    public void setNombre(String nuevoNombre) {
+        this.nombre= nuevoNombre;
+    }
+
+    public void setFechaNac(LocalDate nuevaFechaNac) {
+        this.fechaNac= nuevaFechaNac;
+    }
 }

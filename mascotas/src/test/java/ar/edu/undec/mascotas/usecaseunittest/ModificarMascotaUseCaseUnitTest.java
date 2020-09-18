@@ -35,8 +35,7 @@ public class ModificarMascotaUseCaseUnitTest {
 
         when(modificarMascotaRepository.guardarMascota(mascota)).thenReturn(true);
 
-        assertTrue(modificarMascotaUseCase.modificarMascota(mascota, nuevoNombre));
-
+        assertTrue(modificarMascotaUseCase.modificarNombreMascota(mascota, nuevoNombre));
     }
 
     @Test
@@ -52,7 +51,37 @@ public class ModificarMascotaUseCaseUnitTest {
 
         when(modificarMascotaRepository.guardarMascota(mascota)).thenReturn(false);
 
-        assertFalse(modificarMascotaUseCase.modificarMascota(mascota, nuevoNombre));
+        assertFalse(modificarMascotaUseCase.modificarNombreMascota(mascota, nuevoNombre));
+
+    }
+
+    @Test
+    void modificarMascota_modificarRaza() throws MascotaException {
+
+        Mascota mascota = Mascota.getInstance("Ringo", "Labrador", LocalDate.of(2005,2,12));
+
+        ModificarMascotaUseCase modificarMascotaUseCase = new ModificarMascotaUseCase(modificarMascotaRepository);
+
+        String nuevaRaza= "Golden";
+
+        when(modificarMascotaRepository.guardarMascota(mascota)).thenReturn(false);
+
+        assertTrue(modificarMascotaUseCase.modificarRazaMascota(mascota, nuevaRaza));
+
+    }
+
+    @Test
+    void modificarMascota_modificarFechaNac() throws MascotaException {
+
+        Mascota mascota = Mascota.getInstance("Ringo", "Labrador", LocalDate.of(2005,2,12));
+
+        ModificarMascotaUseCase modificarMascotaUseCase = new ModificarMascotaUseCase(modificarMascotaRepository);
+
+        LocalDate nuevaFecha= LocalDate.of(2006,10,5);
+
+        when(modificarMascotaRepository.guardarMascota(mascota)).thenReturn(false);
+
+        assertTrue(modificarMascotaUseCase.modificarFechaNacMascota(mascota, nuevaFecha));
 
     }
 

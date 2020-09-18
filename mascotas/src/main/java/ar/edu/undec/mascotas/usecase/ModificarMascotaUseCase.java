@@ -7,6 +7,8 @@ import ar.edu.undec.mascotas.input.IModificarMascotaInput;
 import ar.edu.undec.mascotas.repository.ICrearMascotaRepository;
 import ar.edu.undec.mascotas.repository.IModificarMascotaRepository;
 
+import java.time.LocalDate;
+
 public class ModificarMascotaUseCase implements IModificarMascotaInput {
 
     IModificarMascotaRepository modificarMascotaRepository;
@@ -17,7 +19,7 @@ public class ModificarMascotaUseCase implements IModificarMascotaInput {
     }
 
     @Override
-    public boolean modificarMascota(Mascota mascota, String nuevoNombre) {
+    public boolean modificarNombreMascota(Mascota mascota, String nuevoNombre) {
         if (modificarMascotaRepository.existeMascota(nuevoNombre))
             return false;
         else {
@@ -27,4 +29,17 @@ public class ModificarMascotaUseCase implements IModificarMascotaInput {
         }
     }
 
+    @Override
+    public boolean modificarRazaMascota(Mascota mascota, String nuevaRaza) {
+         mascota.setRaza(nuevaRaza);
+         modificarMascotaRepository.guardarMascota(mascota);
+         return true;
+    }
+
+    @Override
+    public boolean modificarFechaNacMascota(Mascota mascota, LocalDate nuevaFechaNac) {
+        mascota.setFechaNac(nuevaFechaNac);
+        modificarMascotaRepository.guardarMascota(mascota);
+        return true;
+    }
 }

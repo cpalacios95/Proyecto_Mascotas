@@ -31,4 +31,12 @@ public class Mascota {
     public void setNombre(String nuevoNombre){
         this.nombre=nuevoNombre;
     }
+
+    public void setFechaNac(LocalDate nuevaFechaNac) {
+        this.fechaNac=nuevaFechaNac;
+    }
+
+    public void setRaza(String nuevaRaza) {
+        this.raza=nuevaRaza;
+    }
 }

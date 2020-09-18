@@ -1,9 +1,14 @@
 package ar.edu.undec.mascotas.input;
 
 import ar.edu.undec.mascotas.domain.Mascota;
-import ar.edu.undec.mascotas.exceptions.MascotaException;
+
+import java.time.LocalDate;
 
 public interface IModificarMascotaInput {
 
-    boolean modificarMascota(Mascota mascota, String nuevoNombre);
+    boolean modificarNombreMascota(Mascota mascota, String nuevoNombre);
+    boolean modificarRazaMascota(Mascota mascota, String nuevaRaza);
+    boolean modificarFechaNacMascota(Mascota mascota, LocalDate nuevaFechaNac);
+
+
 }

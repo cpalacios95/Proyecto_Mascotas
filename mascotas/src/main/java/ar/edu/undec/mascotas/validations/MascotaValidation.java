@@ -14,7 +14,7 @@ public class MascotaValidation {
 
         if(fechaNac.isBefore(LocalDate.of(1990,1,1))) throw new MascotaException("La fecha de nacimiento de la mascota no puede ser menor a 1990");
 
-        if(fechaNac.isAfter(LocalDate.of(2021,1,1))) throw new MascotaException("La fecha de nacimiento de la mascota no puede ser menor a 1990");
+        if(fechaNac.isAfter(LocalDate.now())) throw new MascotaException("La fecha de nacimiento de la mascota no puede ser menor a 1990");
     }
 
 }

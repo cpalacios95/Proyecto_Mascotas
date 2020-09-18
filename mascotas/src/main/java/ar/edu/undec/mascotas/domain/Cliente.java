@@ -1,5 +1,8 @@
 package ar.edu.undec.mascotas.domain;
 
+import ar.edu.undec.mascotas.exceptions.ClienteException;
+import ar.edu.undec.mascotas.validations.ClienteValidation;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +24,9 @@ public class Cliente {
         this.misMascotas= new ArrayList<>();
     }
 
-    public static Cliente getInstance(String apellido, String nombre, String dni, LocalDate fechaNac) {
+    public static Cliente getInstance(String apellido, String nombre, String dni, LocalDate fechaNac) throws ClienteException {
+
+        ClienteValidation.validarDatos(apellido,nombre,dni,fechaNac);
 
         return new Cliente(apellido,nombre,dni,fechaNac);
     }

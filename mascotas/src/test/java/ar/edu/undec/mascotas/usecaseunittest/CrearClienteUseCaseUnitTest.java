@@ -3,8 +3,8 @@ package ar.edu.undec.mascotas.usecaseunittest;
 import Mockito.MockitoExtension;
 import ar.edu.undec.mascotas.domain.Cliente;
 import ar.edu.undec.mascotas.domain.Mascota;
+import ar.edu.undec.mascotas.exceptions.ClienteException;
 import ar.edu.undec.mascotas.exceptions.MascotaException;
-import ar.edu.undec.mascotas.input.ICrearMascotaInput;
 import ar.edu.undec.mascotas.repository.ICrearClienteRepository;
 import ar.edu.undec.mascotas.repository.ICrearMascotaRepository;
 import ar.edu.undec.mascotas.usecase.CrearClienteUseCase;
@@ -29,7 +29,7 @@ public class CrearClienteUseCaseUnitTest {
     ICrearMascotaRepository crearMascotaRepository;
 
     @Test
-    void crearCliente_clienteNoExiste_crearCliente() {
+    void crearCliente_clienteNoExiste_crearCliente() throws ClienteException {
 
         Cliente cliente = Cliente.getInstance("Palacios", "Cristian", "39700483", LocalDate.of(1996,11,22));
 
@@ -43,7 +43,7 @@ public class CrearClienteUseCaseUnitTest {
     }
 
     @Test
-    void crearCliente_clienteExiste_noCrearCliente() {
+    void crearCliente_clienteExiste_noCrearCliente() throws ClienteException {
 
         Cliente cliente = Cliente.getInstance("Palacios", "Cristian", "39700483", LocalDate.of(1996,11,22));
 
@@ -57,7 +57,7 @@ public class CrearClienteUseCaseUnitTest {
     }
 
     @Test
-    void crearCliente_mascotaNoExiste_addMascota() throws MascotaException {
+    void crearCliente_mascotaNoExiste_addMascota() throws MascotaException, ClienteException {
 
         Cliente cliente = Cliente.getInstance("Palacios", "Cristian", "39700483", LocalDate.of(1996,11,22));
 
@@ -82,7 +82,7 @@ public class CrearClienteUseCaseUnitTest {
     }
 
     @Test
-    void crearCliente_mascotaExiste_noAddMascota() throws MascotaException {
+    void crearCliente_mascotaExiste_noAddMascota() throws MascotaException, ClienteException {
 
         Cliente cliente = Cliente.getInstance("Palacios", "Cristian", "39700483", LocalDate.of(1996,11,22));
 
@@ -104,6 +104,41 @@ public class CrearClienteUseCaseUnitTest {
         assertFalse(cliente.addMascotaCliente(mascota01, expected01));
         assertFalse(cliente.addMascotaCliente(mascota01, expected03));
 
+    }
+
+    @Test
+    void crearCliete_apellidoVacio(){
+
+        assertThrows(ClienteException.class, () -> Cliente.getInstance("", "Cristian", "39700483", LocalDate.of(2005, 11, 12)));
+    }
+
+    @Test
+    void crearCliete_apellidoNulo(){
+
+        assertThrows(NullPointerException.class, () -> Cliente.getInstance(null, "Cristian", "39700483", LocalDate.of(2005, 11, 12)));
+    }
+
+    @Test
+    void crearCliete_nombreVacio(){
+
+        assertThrows(ClienteException.class, () -> Cliente.getInstance("Palacios", "", "39700483", LocalDate.of(2005, 11, 12)));
+    }
+    @Test
+    void crearCliete_nombreNulo(){
+
+        assertThrows(NullPointerException.class, () -> Cliente.getInstance("Palacios", null, "39700483", LocalDate.of(2005, 11, 12)));
+    }
+
+    @Test
+    void crearCliente_fachaInvalidaMenorAFechaLimite(){
+
+        assertThrows(ClienteException.class, () -> Cliente.getInstance("Palacios", "Cristian", "39700483",LocalDate.of(1919, 11, 12)));
+    }
+
+    @Test
+    void crearCliente_fachaInvalidaMayorAFechaLimite(){
+
+        assertThrows(ClienteException.class, () -> Cliente.getInstance("Palacios", "Cristian", "39700483",LocalDate.of(2022, 11, 12)));
     }
 
 

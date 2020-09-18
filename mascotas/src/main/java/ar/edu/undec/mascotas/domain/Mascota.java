@@ -26,4 +26,9 @@ public class Mascota {
     public String getNombre() {
         return this.nombre;
     }
+
+
+    public void setNombre(String nuevoNombre){
+        this.nombre=nuevoNombre;
+    }
 }

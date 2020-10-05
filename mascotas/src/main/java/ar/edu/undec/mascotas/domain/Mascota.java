@@ -40,4 +40,12 @@ public class Mascota {
     public void setRaza(String nuevaRaza) {
         this.raza=nuevaRaza;
     }
+
+    public String getRaza() {
+        return this.raza;
+    }
+
+    public LocalDate getFechaNac() {
+        return this.fechaNac;
+    }
 }

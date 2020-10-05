@@ -10,7 +10,7 @@ public class MascotaEntity {
     @Id
     @Column(name = "idmascota")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mascota_id_gen")
-    private int idMascota;
+    private Integer idMascota;
 
     @Column(name = "nombre")
     private String nombre;
@@ -24,11 +24,11 @@ public class MascotaEntity {
     public MascotaEntity(){
     }
 
-    public int getIdmascota() {
+    public Integer getIdmascota() {
         return idMascota;
     }
 
-    public void setIdmascota(int idmascota) {
+    public void setIdmascota(Integer idmascota) {
         this.idMascota = idmascota;
     }
 

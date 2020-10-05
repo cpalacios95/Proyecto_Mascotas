@@ -10,6 +10,7 @@ public class Mascota {
     private String nombre;
     private LocalDate fechaNac;
     private String raza;
+    private Cliente duenio;
 
     public Mascota(String nombre, String raza, LocalDate fechaNac) {
         this.nombre = nombre;

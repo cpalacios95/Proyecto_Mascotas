@@ -9,10 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 
-import java.time.DateTimeException;
+
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import static org.mockito.Mockito.when;
 
 @ExtendWith({MockitoExtension.class})
@@ -44,9 +45,8 @@ public class CrearMascotaUseCaseUnitTest {
         CrearMascotaUseCase mascotaUseCase = new CrearMascotaUseCase(crearMascotaRepository);
 
         when(crearMascotaRepository.existeMascota(mascota01.getNombre())).thenReturn(true);
-        when(crearMascotaRepository.guardarMascota(mascota01)).thenReturn(false);
 
-        assertFalse(mascotaUseCase.crearMascota(mascota01));
+        assertThrows(MascotaException.class, () -> mascotaUseCase.crearMascota(mascota01));
 
     }
 

@@ -29,7 +29,7 @@ public class CrearClienteUseCaseUnitTest {
     ICrearMascotaRepository crearMascotaRepository;
 
     @Test
-    void crearCliente_clienteNoExiste_crearCliente() throws ClienteException {
+    void crearCliente_clienteNoExiste_crearCliente() throws ClienteException, MascotaException {
 
         Cliente cliente = Cliente.getInstance("Palacios", "Cristian", "39700483", LocalDate.of(1996,11,22));
 
@@ -50,9 +50,8 @@ public class CrearClienteUseCaseUnitTest {
         CrearClienteUseCase crearClienteUseCase = new CrearClienteUseCase(crearClienteRepository);
 
         when(crearClienteRepository.existeCliente(cliente.getDni())).thenReturn(true);
-        when(crearClienteRepository.guardarCliente(cliente)).thenReturn(false);
 
-        assertFalse(crearClienteUseCase.crearCliente(cliente));
+        assertThrows(ClienteException.class, ()-> crearClienteUseCase.crearCliente(cliente));
 
     }
 
@@ -130,9 +129,9 @@ public class CrearClienteUseCaseUnitTest {
     }
 
     @Test
-    void crearCliente_fachaInvalidaMenorAFechaLimite(){
+    void crearCliente_fachaInvalidaMenorDeEdad(){
 
-        assertThrows(ClienteException.class, () -> Cliente.getInstance("Palacios", "Cristian", "39700483",LocalDate.of(1919, 11, 12)));
+        assertThrows(ClienteException.class, () -> Cliente.getInstance("Palacios", "Cristian", "39700483",LocalDate.of(2005, 11, 12)));
     }
 
     @Test
@@ -141,5 +140,10 @@ public class CrearClienteUseCaseUnitTest {
         assertThrows(ClienteException.class, () -> Cliente.getInstance("Palacios", "Cristian", "39700483",LocalDate.of(2022, 11, 12)));
     }
 
+    @Test
+    void crearCliente_DniInvalido(){
+
+        assertThrows(ClienteException.class, () -> Cliente.getInstance("Palacios", "Cristian", "39700483",LocalDate.of(2022, 11, 12)));
+    }
 
 }

@@ -12,7 +12,7 @@ public class ClienteValidation {
 
         if(nombre.length()==0) throw new ClienteException("El nombre del cliente no puede ser vacio");
 
-        if(fechaNac.isBefore(LocalDate.of(1920,1,1))) throw new ClienteException("La fecha de nacimiento del cliente no puede ser menor a 1990");
+        if(fechaNac.compareTo(LocalDate.now().minusYears(18))>0) throw new ClienteException("La fecha de nacimiento del cliente no puede ser menor a 1990");
 
         if(fechaNac.isAfter(LocalDate.now())) throw new ClienteException("La fecha de nacimiento del cliente no puede ser menor a 1990");
 

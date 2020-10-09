@@ -58,4 +58,26 @@ public class Cliente {
     public void setFechaNac(LocalDate nuevaFechaNac) {
         this.fechaNac= nuevaFechaNac;
     }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public LocalDate getFechaNac() {
+        return fechaNac;
+    }
+
+    public List<Mascota> getMisMascotas() {
+        return misMascotas;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente: "+ getApellido()+" " + getNombre()+", "+"DNI: " +getDni()+", ("+getFechaNac()+")";
+
+    }
 }

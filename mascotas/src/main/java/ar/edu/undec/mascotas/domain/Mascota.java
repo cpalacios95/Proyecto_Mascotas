@@ -48,4 +48,8 @@ public class Mascota {
     public LocalDate getFechaNac() {
         return this.fechaNac;
     }
+
+    public Cliente getDuenio() {
+        return this.duenio;
+    }
 }

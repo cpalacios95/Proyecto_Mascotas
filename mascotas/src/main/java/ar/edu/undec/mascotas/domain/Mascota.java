@@ -52,4 +52,9 @@ public class Mascota {
     public Cliente getDuenio() {
         return this.duenio;
     }
+
+    @Override
+    public String toString() {
+        return "Mascota: "+this.nombre+", Raza: "+this.raza+", ("+this.fechaNac+");";
+    }
 }

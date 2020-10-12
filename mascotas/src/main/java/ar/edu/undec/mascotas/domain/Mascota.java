@@ -53,8 +53,13 @@ public class Mascota {
         return this.duenio;
     }
 
+    public void setDuenio(Cliente cliente){
+        this.duenio = cliente;
+    }
+
     @Override
     public String toString() {
         return "Mascota: "+this.nombre+", Raza: "+this.raza+", ("+this.fechaNac+");";
     }
+
 }

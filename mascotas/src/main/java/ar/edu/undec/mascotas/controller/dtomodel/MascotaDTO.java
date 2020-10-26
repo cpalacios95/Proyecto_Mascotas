@@ -22,4 +22,15 @@ public class MascotaDTO {
     }
 
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public LocalDate getFechaNac() {
+        return fechaNac;
+    }
+
+    public String getRaza() {
+        return raza;
+    }
 }

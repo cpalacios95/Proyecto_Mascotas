@@ -9,11 +9,11 @@ import java.util.List;
 
 
 public class Cliente {
-
     private String apellido;
     private String nombre;
     private String dni;
     private LocalDate fechaNac;
+
     private List<Mascota> misMascotas;
 
     public Cliente(String apellido, String nombre, String dni, LocalDate fechaNac) {

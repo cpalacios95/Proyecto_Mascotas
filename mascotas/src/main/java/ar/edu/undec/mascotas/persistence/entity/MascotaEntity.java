@@ -21,6 +21,9 @@ public class MascotaEntity {
     @Column(name = "raza")
     private String raza;
 
+    @ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private ClienteEntity duenio;
+
     public MascotaEntity(){
     }
 
